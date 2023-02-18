@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # my apps
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,3 +123,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STRIPE_PUBLIC_KEY = 'pk_test_51McmzgJHPeB7JbUnt4tvzmN48O9Z2WMruJDq4SDp1b0cRnzUDvNngsQBrG0ok5A1YZBm15AcOQcEFQXWTSSEQNOK00oeKM5xC8'
+STRIPE_SECRET_KEY = 'sk_test_51McmzgJHPeB7JbUnmICpAgaYhil0jrLmgfd34qQS2v8HmhQREem2LXl7EjWsOrUtodabSEXQQJ1fBkgVz133jlAM00tGUB5RFy'
+STRIPE_WEBHOOK_SECRET = ''

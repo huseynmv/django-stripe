@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from products.views import CreateCheckoutSessionView, ProductLandingPageView, CancelView, SuccessView, AllProductdsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('all/', AllProductdsView.as_view(), name='all'),
+    path('create-checkout-session/<id>', CreateCheckoutSessionView.as_view(), name='create-check out-session'),
+    path('', ProductLandingPageView.as_view(), name='langing-page'),
+    path('cancel/', CancelView.as_view(), name='cancel'),
+    path('success/', SuccessView.as_view(), name='success')
+
 ]
