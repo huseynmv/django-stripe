@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-l%fqt&g&kfy6qbow9h05!z6hcx1vlf&gd&ieh4p!7@^q50zsg&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -124,6 +124,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STRIPE_PUBLIC_KEY = 'pk_test_51McmzgJHPeB7JbUnt4tvzmN48O9Z2WMruJDq4SDp1b0cRnzUDvNngsQBrG0ok5A1YZBm15AcOQcEFQXWTSSEQNOK00oeKM5xC8'
-STRIPE_SECRET_KEY = 'sk_test_51McmzgJHPeB7JbUnmICpAgaYhil0jrLmgfd34qQS2v8HmhQREem2LXl7EjWsOrUtodabSEXQQJ1fBkgVz133jlAM00tGUB5RFy'
-STRIPE_WEBHOOK_SECRET = ''
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')

@@ -6,7 +6,6 @@ import stripe
 from .models import Product
 from django.views.generic.list import ListView
 
-
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
