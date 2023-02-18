@@ -4,11 +4,15 @@ from django.http import JsonResponse
 from django.views.generic import TemplateView 
 import stripe
 from .models import Product
+from django.views.generic.list import ListView
+
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-class AllProductdsView(TemplateView):
-    template_name = 'products.html'
+# class AllProductdsView(TemplateView):
+#     template_name = 'products.html',
+    
 
 
 class SuccessView(TemplateView):
@@ -18,10 +22,14 @@ class CancelView(TemplateView):
     template_name = 'cancel.html'
 
 
+class ProductListView(ListView):
+    model = Product
+    template_name = 'products.html'
+
 class ProductLandingPageView(TemplateView):
     template_name = 'index.html'
     def get_context_data(self, **kwargs):
-        product = Product.objects.get(name='Test')
+        product = Product.objects.get(id=self.kwargs['pk'])
         context =  super(ProductLandingPageView, self).get_context_data(**kwargs)
         context.update({
             'product': product,
